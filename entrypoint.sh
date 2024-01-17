@@ -11,6 +11,8 @@ if git diff --staged --quiet; then
   echo "::notice::Replexica has not found any missing translations"
 else
   git commit -m "feat: add missing translations [skip ci]"
+  # Pull the latest changes from the remote repository
+  git pull --rebase
   git push
   # retrieve the last commit hash
   COMMIT_HASH=$(git rev-parse HEAD)
