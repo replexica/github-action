@@ -3,6 +3,7 @@
 # Run Replexica CLI to localize missing strings
 npx replexica@latest localize
 # Commit the changes into the current branch
+git config --global --add safe.directory $PWD
 git config --global user.name "Replexica"
 git config --global user.email "support@replexica.com"
 git add .
