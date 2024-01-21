@@ -22,7 +22,7 @@ else
   # retrieve the last commit hash
   COMMIT_HASH=$(git rev-parse HEAD)
   # build a github url to the commit
-  COMMIT_URL="https://github.com/replexica/$GITHUB_REPOSITORY/commit/$COMMIT_HASH"
+  COMMIT_URL="https://github.com/$GITHUB_REPOSITORY/commit/$COMMIT_HASH"
   # output the commit url to the github actions announcements using ::notice::
   echo "::notice::Replexica has just added missing translations and pushed them to the repo! The commit: $COMMIT_URL"
 fi
