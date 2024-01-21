@@ -2,6 +2,11 @@
 
 # Run Replexica CLI to localize missing strings
 npx replexica@latest localize --clientName gha
+# Return exit code 1 if the previous command fails
+if [ $? -eq 1 ]; then
+  echo "::error::Replexica incurred an error while localizing missing strings. Please contact the support team!"
+  exit 1
+fi
 # Commit the changes into the current branch
 git config --global --add safe.directory $PWD
 git config --global user.name "Replexica"
@@ -19,5 +24,5 @@ else
   # build a github url to the commit
   COMMIT_URL="https://github.com/replexica/$GITHUB_REPOSITORY/commit/$COMMIT_HASH"
   # output the commit url to the github actions announcements using ::notice::
-  echo "::notice::Replexica has just added missing translations in the following commit: $COMMIT_URL"
+  echo "::notice::Replexica has just added missing translations and pushed them to the repo! The commit: $COMMIT_URL"
 fi
