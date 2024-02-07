@@ -17,7 +17,12 @@ git add .
 if git diff --staged --quiet; then
   echo "::notice::Replexica has not found any missing translations"
 else
-  git commit -m "feat: add missing translations [skip ci]"
+  # if $INPUT_SKIP_CI is set to true, append [skip ci] to the commit message
+  if [ "$INPUT_SKIP_CI" = "true" ]; then
+    git commit -m "feat: add missing translations [skip ci]"
+  else
+    git commit -m "feat: add missing translations"
+  fi
   # Pull the latest changes from the remote repository
   git pull --rebase
   git push

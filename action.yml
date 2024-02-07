@@ -1,6 +1,11 @@
 # action.yml
 name: 'Replexica'
 description: 'Replexica Github Action'
+inputs:
+  skip_ci:
+    description: 'Skip CI'
+    required: false
+    default: 'true'
 runs:
   using: 'docker'
   image: 'Dockerfile'
