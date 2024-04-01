@@ -1,9 +1,7 @@
 #!/bin/sh -l
 
 # Run Replexica CLI to localize missing strings
-npx replexica@latest localize \
-  --triggerType github-action \
-  --triggerName $GITHUB_REPOSITORY
+npx replexica@latest localize
 # Return exit code 1 if the previous command fails
 if [ $? -eq 1 ]; then
   echo "::error::Replexica incurred an error while localizing missing strings. Please contact the support team!"
